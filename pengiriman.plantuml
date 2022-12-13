@@ -1,0 +1,72 @@
+@startuml pengiriman
+
+class Bil {
+  + angka: integer
+  + Bil(Angka: Int)
+}
+
+class Database {
+  - username: string 
+  - password: string 
+  - nama: string
+  + Database()
+  + Database(username:String, password:String, nama:String)
+  + setUsername(username:String)
+  + setPassword(password:String)
+  + setNama(nama:String)
+  + getUsername():String
+  + getPasswird():String
+  + getNama():String
+}
+
+class Induk {
+  + berat_barang: Integer
+  + panjang_barang: Integer 
+  + lebar_barang: Integer
+  + tinggi_barang: Integer
+  + tarif: Double
+  + Induk(Int berat, int panjang, int lebar, int tinggi)
+}
+
+class Tarif {
+  + Tarif(int berat, int panjang, int lebar, int tinggi)
+  + rumus():void
+}
+
+class Barang {
+  + nama_pengirim: String
+  + alamat_pengirim: String
+  + nama_penerima: String
+  + alamat_penerima: String  
+  + status: String
+  + nomor_resi: Integer
+  + berat_barang: Integer
+  + panjang_barang: Integer
+  + lebar_barang: Integer
+  + tinggi_barang: Integer
+  + Tarif: Double
+  + Barang(String nPengirim, String alaPengirim, String nPenerima, String alaPenerima,  
+    int resi, int berat, int panjang, int lebar, int tinggi)
+  + getNama_pengirim():String
+  + getAlamat_pengirim():String
+  + getNama_penerima():String
+  + getAlamat_penerima():String
+  + getStatus():String
+  + getNomor_resi():Integer
+  + rumus():void
+}
+
+class Welcome {
+  + Welcome(angka: Integer)
+  - Login():void
+  - menu():void
+}
+
+Database <-- Welcome
+Tarif <-- Database
+Barang <-- Tarif
+
+Bil <|-- Welcome
+Induk <|-- Tarif
+
+@enduml
